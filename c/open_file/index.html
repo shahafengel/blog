@@ -88,6 +88,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#convert-string-to-num-and-do-sum" class="nav-link">convert string to num and do sum</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -105,8 +109,52 @@
     fprintf(file, &quot;Hello, C Programming!\n&quot;);
     fclose(file);
 </code></pre>
-<p><a href="google.com">shahaf</a></p>
-<p><img alt="alt text" src="../image.png" /></p></div>
+<h2 id="convert-string-to-num-and-do-sum">convert string to num and do sum</h2>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdbool.h&gt;
+
+int main()
+{
+   FILE *file;
+   file = fopen(&quot;shahaf&quot;, &quot;w&quot;);
+   fprintf(file, &quot;1,2,3,4,5\n&quot;);
+   fclose(file);
+   int sum = 0;
+
+   file = fopen(&quot;shahaf&quot;, &quot;r&quot;);
+   if (file == NULL)
+   {
+      perror(&quot;Error opening file for reading&quot;);
+      return 1;
+   }
+   char read[256];
+
+   while (fgets(read, sizeof(read), file) != NULL)
+   {
+
+      printf(&quot;%s&quot;, read);
+   }
+   fclose(file);
+   const char delim[] = &quot;,&quot;;
+   read[strcspn(read, &quot;\n&quot;)] = '\0';
+   char *data = strtok(read, delim);
+   sum = atoi(data);
+   while (data != NULL)
+   {
+
+      printf(&quot;%s&quot;, data);
+      data = strtok(NULL, delim);
+      if (data != NULL)
+         sum = sum + atoi(data);
+   }
+   printf(&quot;%d&quot;, sum);
+
+   return 0;
+}
+</code></pre></div>
             </div>
         </div>
 
